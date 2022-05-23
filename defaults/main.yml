@@ -1,0 +1,30 @@
+---
+# defaults file for roles
+
+index_file: index-php.j2
+doc_root: /var/www/html
+apache_port: 80
+config_path: /etc/apache2/sites-enabled/000-default.conf
+state: present
+php: phpinfo(); 
+error_log: ${APACHE_LOG_DIR}/error.log
+access_log: ${APACHE_LOG_DIR}/access.log
+
+pkg:
+ - php7.4-mysql
+ - php7.4-curl
+ - php7.4-json
+ - php7.4-cgi
+ - php7.4-xsl
+ - php7.4-cgi
+ - php7.4-gd
+ - php7.4-mbstring
+ - php7.4-zip
+ - php7.4-xmlrpc
+ - php7.4-soap
+ - php7.4-intl
+ - libapache2-mod-php
+
+
+
+

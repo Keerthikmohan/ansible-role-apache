@@ -1,0 +1,30 @@
+---
+- name: Install Python pip
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: "{{ state }}"
+  with_items:
+  - python-pip
+  - python3-pip
+     
+
+- name: installing pymysql is present #MySQL-python (Python 2.X) module is required
+  pip:
+    name: pymysql
+    state: present
+
+- name: Adding Mysql user named TOM
+  mysql_user:
+      name: TOM1
+      password: 12345
+      priv: '*.*:ALL'
+      state: "{{ state }}"
+      login_unix_socket: /var/run/mysqld/mysqld.sock
+
+- name: copying .my.cnf to Tom user
+  ansible.builtin.copy:
+       src: .my.cnf
+       dest: /home/Tom/
+       owner: Tom
+       group: Tom
+       mode: '0600'

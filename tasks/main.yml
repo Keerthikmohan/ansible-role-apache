@@ -1,0 +1,17 @@
+---
+# tasks file for roles
+
+- name: including apache2 Task
+  include_tasks: ubuntu.yml
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: including httpd task
+  include_tasks: redhat.yml
+  when: ansible_facts['os_family'] == "CentOS"
+
+- name: creating mysql user
+  include_tasks: mysql.yml
+ 
+
+
+        
